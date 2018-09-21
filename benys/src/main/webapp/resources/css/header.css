@@ -1,0 +1,48 @@
+body {margin: 0}
+#header {
+  height: 100px;
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+#me {font-size: 50px;}
+ul {list-style: none;}
+
+ul>li>a {
+  text-decoration: none;
+  font-size: 14px;
+  color: slategrey;
+}
+
+li {
+  display: inline-block;
+  margin-right: 80px;
+
+}
+
+ul>li>a:hover {
+  color: #1f7bd8;
+  font-size: 16px;
+  transition: 0.2s;
+}
+
+@media(max-width: 644px) {
+	#header {
+		width: 650px;
+	}
+}
+#member {
+  font-size: 13px;
+  text-align: right;
+}
+#member>span>a {
+  text-decoration: none;
+  color: slategrey;
+
+}
+.login, .join {
+  margin-right: 15px;
+  position: relative;
+  bottom: 150px;
+}
+
