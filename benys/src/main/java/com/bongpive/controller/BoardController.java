@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.bongpive.domain.BoardVO;
 import com.bongpive.persistence.BoardDAO;
@@ -30,4 +31,10 @@ public class BoardController {
 	public String register() {
 		return "board/register";
 	}
+	
+	@RequestMapping(value = "register", method = RequestMethod.POST)
+	public void registerPOST() {
+		
+	}
+	
 }
