@@ -16,12 +16,18 @@ public class BoardDAOImpl implements BoardDAO {
 	
 	@Override
 	public void register(BoardVO board) {
-		session.insert("", board);
+		session.insert("board.register", board);
 	}
 
 	@Override
 	public List<BoardVO> list() {
 		return session.selectList("board.list");
 	}
+
+	@Override
+	public BoardVO read(int seq) {
+		return session.selectOne("board.read", seq);
+	}
+
 
 }

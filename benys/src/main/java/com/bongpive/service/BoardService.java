@@ -1,11 +1,11 @@
-package com.bongpive.persistence;
+package com.bongpive.service;
 
 import java.util.List;
 
 import com.bongpive.domain.BoardVO;
 
-public interface BoardDAO {
-	
+public interface BoardService {
+
 	public void register(BoardVO board);
 	
 	public List<BoardVO> list();

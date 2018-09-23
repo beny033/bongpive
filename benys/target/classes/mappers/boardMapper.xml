@@ -10,9 +10,35 @@
 		  *
 		FROM
 			TBL_BOARD
+		WHERE
+			SEQ &gt; 0
+		ORDER BY SEQ DESC
 	</select>
 	
+	<insert id="register">
+		INSERT INTO TBL_BOARD (	
+								WRITER
+							,	PASSWORD
+							,	TITLE
+							,	CONTENT	)
+					   VALUES (
+					   			#{writer}
+					   		,	#{password}
+					   		,	#{title}
+					   		,	#{content} )
+	</insert>
 
+	<select id="read" resultType="BoardVO">
+		SELECT 
+				WRITER
+			,	TITLE
+			,	CONTENT
+			,	SEQ
+		FROM 
+			TBL_BOARD
+		WHERE 
+			SEQ = #{seq}
+	</select>
 
 </mapper>
 

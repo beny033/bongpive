@@ -4,7 +4,6 @@ table {
     margin: 0 auto;
     color: #414556;
     font-size: 13px;
-    width: 690px;
     border-collapse: collapse;
 }
 
@@ -30,26 +29,30 @@ td{
 }
 
 #tbl_title{width: 400px;}
-#tbl_content{width: 570px; height: 300px;}
+#tbl_content{width: 650px; height: 360px;}
 
-.submit{border-bottom: none;}
-
-#save, #cancle{
+ input[type=button] {
   width: 85px;
   height: 40px;
   background-color: #2171d4;
-  border-radius: 300px;
+  border-radius: 100px;
   border: none;
   color: white;
   position: relative;
   opacity: 0.8;
+  collspan: 4;
 }
 
-#cancle{left: 490px;}
-#save{left: 500px;}
+#remove{left: 582px;}
+#modify{left: 592px;}
 
-#save:hover, #cancle:hover {
-  transition: 0.2s;
-  opacity: 1;
+.buttons{border-bottom: none;}
+
+input[type=button]:hover {
+	opacity: 1;
+	transition: 0.2s;
+} 
+input[type=button]:hover {
+	opacity: 1;
+	transition: 0.2s;
 }
-

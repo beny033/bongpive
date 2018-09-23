@@ -26,7 +26,7 @@ ul>li>a:hover {
   transition: 0.2s;
 }
 
-@media(max-width: 644px) {
+@media(max-width: 661px) {
 	#header {
 		width: 650px;
 	}

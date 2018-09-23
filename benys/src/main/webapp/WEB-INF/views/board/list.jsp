@@ -10,6 +10,13 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 <link href="${pageContext.request.contextPath}/resources/css/boardList.css" type="text/css" rel="stylesheet">
+<script>
+	var msg = '${msg}';
+	
+	if(msg === 'SUCCESS') {
+		alert('정상적으로 처리되었습니다.');
+	}
+</script>
 </head>
 
 <body onload="setColor('board');">
@@ -28,7 +35,7 @@
 	   <c:forEach var="list" items="${list}"> 
 		<tr>
 		  <td class="data">${list.seq}</td>
-		  <td class="data"><a href="">${list.title}</a></td>
+		  <td class="data"><a href="read?seq=${list.seq}">${list.title}</a></td>
 		  <td class="data">${list.writer}</td>
 		  <td class="data"><fmt:formatDate value="${list.regdate}" pattern="YYYY-MM-dd"/></td>
 		  <td class="data">${list.views}</td>
