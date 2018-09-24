@@ -9,14 +9,15 @@
 <script>
 	function actionLocation(location) {
 		var thisForm = document.form;
+		var id = document.getElementById(location).value;
 		
-		if(location == 'modify') {
-			thisForm.action = 'modify';
+		if(id == '수 정') {
+			thisForm.action = "selfCheck?request=modify";
 			thisForm.submit();
-		} else {
-			thisForm.action = 'remove';
+		} else if(id == '삭 제') {
+			thisForm.action = "selfCheck?request=remove";
 			thisForm.submit();
-		}
+		} 
 	}
 </script>
 </head>
@@ -49,6 +50,5 @@
 			</tr>   
 		</table>
 	</form>
-		<!-- onclick="action('modify');" -->
 </body>
 </html>

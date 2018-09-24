@@ -29,5 +29,20 @@ public class BoardDAOImpl implements BoardDAO {
 		return session.selectOne("board.read", seq);
 	}
 
+	@Override
+	public int getPassword(int seq) {
+		return session.selectOne("board.password", seq);
+	}
+
+	@Override
+	public void remove(int seq) {
+		session.delete("board.remove", seq);
+	}
+
+	@Override
+	public void modify(BoardVO board) {
+		session.update("board.modify", board);
+	}
+
 
 }

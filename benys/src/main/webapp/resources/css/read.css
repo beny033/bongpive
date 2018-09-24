@@ -56,3 +56,6 @@ input[type=button]:hover {
 	opacity: 1;
 	transition: 0.2s;
 }
+
+#tbl_seq {background-color: #646871ad;color: white;}
+#save, #cancle {left: 570px;}

@@ -23,6 +23,18 @@
 
 	<jsp:include page="../include/header.jsp" />
 
+	<form action="" method="post">
+	  <select name="searchType">
+		<option value="none">- - - - - - - -</option>
+		<option value="writer">작성자</option>
+		<option value="title">제 목</option>
+		<option value="content">내 용</option>
+		<option value="writerContent">제목 + 내용</option>
+	  </select>
+	  
+	  <input type="text" name="searchText">
+	  <input type="submit" value="검 색">
+    </form>	
 	<table>
 		<tr>
 		  <th>번호</th>

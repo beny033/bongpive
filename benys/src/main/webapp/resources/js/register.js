@@ -14,7 +14,6 @@ function checkPw() {
 
 function checkSubmit() {
 	var tbl_password = document.getElementById('tbl_password').value;
-	var checkMSG = document.getElementById('checkMSG');
 	
 	var writer = document.getElementById('tbl_writer');
 	var title = document.getElementById('tbl_title');
@@ -30,5 +29,4 @@ function checkSubmit() {
 			document.form.submit();
 		}
 	}
-		
 }

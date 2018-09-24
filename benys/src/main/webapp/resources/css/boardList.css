@@ -4,7 +4,7 @@ table {
     margin:0 auto;    
 	width: 1000px;
 	border-collapse: collapse;
-	margin-top: 200px;
+	margin-top: 50px;
 }
 
 th {
@@ -48,4 +48,24 @@ td>a:hover {border-bottom: 1px solid;}
 #writeBtn:hover {
 	opacity: 1;
 	transition: 0.2s;
+}
+
+select{height: 25px;}
+
+form {
+	display: flex;
+	position: relative;
+	left: 54%;
+	width: 410px;
+}
+
+form>input[type=text] {width: 250px;}
+
+form>input[type=submit] {width: 60px;}
+
+@media(max-width: 800px) {
+	form {width: 0;}
+	@media(max-width: 600px) {
+		form{position: static;}
+	}
 }

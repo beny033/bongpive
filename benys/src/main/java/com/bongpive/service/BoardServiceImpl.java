@@ -29,4 +29,19 @@ public class BoardServiceImpl implements BoardService {
 		return dao.read(seq);
 	}
 
+	@Override
+	public int getPassword(int seq) {
+		return dao.getPassword(seq);
+	}
+
+	@Override
+	public void remove(int seq) {
+		dao.remove(seq);
+	}
+
+	@Override
+	public void modify(BoardVO board) {
+		dao.modify(board);
+	}
+
 }

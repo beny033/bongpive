@@ -40,6 +40,34 @@
 			SEQ = #{seq}
 	</select>
 
+	<select id="password" resultType="int">
+		SELECT 
+			PASSWORD
+		FROM 
+			TBL_BOARD
+		WHERE
+			SEQ = #{seq}
+	</select>
+
+	<delete id="remove">
+		DELETE FROM TBL_BOARD WHERE	SEQ = #{seq}
+	</delete>
+
+	<update id="modify">
+		UPDATE TBL_BOARD 
+			SET
+				WRITER  = #{writer}
+			,	TITLE   = #{title}
+			,	CONTENT = #{content}
+			,	MODDATE = NOW()
+			WHERE
+				SEQ = #{seq}
+	</update>
+
+
+
+
+
 </mapper>
 
 
