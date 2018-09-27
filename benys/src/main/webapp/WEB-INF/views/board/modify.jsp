@@ -25,8 +25,8 @@ function checkSubmit() {
 <body onload="setColor('board');">
 
 	<jsp:include page="../include/header.jsp"></jsp:include>
-
 	<form method="post" name="form">
+	  <input type="hidden" name="curruntPage" value="${param.curruntPage}">
 		<table>
 		  <caption>게시글 수정</caption>
 			<tr>
@@ -48,7 +48,7 @@ function checkSubmit() {
 			
 			<tr>
 			  <td class="buttons"><input type="button" value="완 료" id="save" onclick="checkSubmit();"></td>
-			  <td class="buttons"><input type="button" value="취 소" id="cancle" onclick="location.href='read?seq=${board.seq}'"></td>
+			  <td class="buttons"><input type="button" value="취 소" id="cancle" onclick="history.back();"></td>
 			</tr>   
 		</table>
 	</form>

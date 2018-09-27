@@ -1,6 +1,7 @@
 package com.bongpive.persistence;
 
 import java.util.List;
+import java.util.Map;
 
 import com.bongpive.domain.BoardVO;
 
@@ -8,7 +9,7 @@ public interface BoardDAO {
 	
 	public void register(BoardVO board);
 	
-	public List<BoardVO> list();
+	public List<BoardVO> list(Map<String, Integer> map);
 	
 	public BoardVO read(int seq);
 	
@@ -17,4 +18,7 @@ public interface BoardDAO {
 	public void remove(int seq);
 	
 	public void modify(BoardVO board);
+	
+	public int totalPosts();
+	
 }

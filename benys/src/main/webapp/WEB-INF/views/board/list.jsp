@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 <html>
@@ -47,7 +47,21 @@
 	   <c:forEach var="list" items="${list}"> 
 		<tr>
 		  <td class="data">${list.seq}</td>
-		  <td class="data"><a href="read?seq=${list.seq}">${list.title}</a></td>
+		  <td class="data">
+		    <c:set var="ListTitle" value="${list.title}"></c:set>
+			<c:choose>
+		    <c:when test="${fn:length(ListTitle) > 20}">
+				<script>
+					var listTitle = '${list.title}'.substring(0,20) + ".....";
+					document.write("<a href='read?seq=${list.seq}&curruntPage=${paging.curruntPage}'>" + listTitle + "...." + "</a>");
+				</script>
+		    </c:when>
+		    <c:otherwise>
+	 		  <a href="read?seq=${list.seq}&curruntPage=${paging.curruntPage}">${list.title}</a> 
+		    </c:otherwise>
+			</c:choose>
+		  </td>
+		  
 		  <td class="data">${list.writer}</td>
 		  <td class="data"><fmt:formatDate value="${list.regdate}" pattern="YYYY-MM-dd"/></td>
 		  <td class="data">${list.views}</td>
@@ -57,7 +71,18 @@
 		<tr>
 		  <td class="last"><input type="button" value="글쓰기" id="writeBtn" onclick="location.href='register'"></td>
 		</tr>
+	
+	    <tr>
+	   <c:forEach begin="1" end="${paging.totalPages}" step="1" var="pagingNumber">
+	     <td class="pages">
+		   <div id="pagesBtn">
+			 <button >>></button>
+			 <button onclick="location.href='list?curruntPage=${pagingNumber}'">${pagingNumber}</button>
+		   </div>
+	 	 </td>
+	   </c:forEach>
+		</tr>
+ 
 	</table>
-
 </body>
 </html>

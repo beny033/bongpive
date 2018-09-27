@@ -13,6 +13,7 @@
 		WHERE
 			SEQ &gt; 0
 		ORDER BY SEQ DESC
+		LIMIT #{curruntPage}, #{pageShown}
 	</select>
 	
 	<insert id="register">
@@ -64,7 +65,12 @@
 				SEQ = #{seq}
 	</update>
 
-
+	<select id="totalPosts" resultType="int">
+		SELECT
+			COUNT(SEQ)
+		FROM
+			TBL_BOARD
+	</select>
 
 
 

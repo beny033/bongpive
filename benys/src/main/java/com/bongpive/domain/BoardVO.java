@@ -12,7 +12,6 @@ public class BoardVO {
 	private String content;
 	private Date regdate;
 	
-	
 	public Date getRegdate() {
 		return regdate;
 	}

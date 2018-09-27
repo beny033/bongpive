@@ -27,7 +27,8 @@
 
 	<form  method="post" name="form">
 		<input type="hidden" name="seq" value="${board.seq}">
-	
+		<input type="hidden" name="curruntPage" value="${curruntPage}">
+		
 		<table>
 		  <caption>게시글 보기</caption>
 			<tr>
@@ -42,11 +43,10 @@
 			  <th><label for="tbl_content">내 용</label></th>
 			  <td><textarea name="content" id="tbl_content" readonly>${board.content}</textarea></td>
 			</tr>
-			
 			<tr>
 			  <td class="buttons"><input type="button" value="수 정" id="modify" onclick="actionLocation('modify');"></td>
 			  <td class="buttons"><input type="button" value="삭 제" id="remove" onclick="actionLocation('remove');"></td>
-			  <td class="buttons"><input type="button" value="이 전" id="back" onclick="location.href='list'"></td>
+			  <td class="buttons"><input type="button" value="이 전" id="back" onclick="location.href='list?curruntPage=${curruntPage}'" ></td>
 			</tr>   
 		</table>
 	</form>
