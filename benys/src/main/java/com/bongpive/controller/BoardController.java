@@ -1,17 +1,18 @@
 package com.bongpive.controller;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.bongpive.domain.BoardSearch;
 import com.bongpive.domain.BoardVO;
 import com.bongpive.domain.PagingProcess;
 import com.bongpive.service.BoardService;
@@ -23,20 +24,16 @@ public class BoardController {
 	private BoardService service;
 
 	@RequestMapping("list")
-	public String list(@RequestParam(value = "curruntPage", defaultValue = "1") int curruntPage, BoardVO board, Model model) {
-
+	public String list(@RequestParam(value="curruntPage", defaultValue="1") int curruntPage,
+					   @ModelAttribute("search") BoardSearch search, Model model) {
+		
+		List<BoardVO> list = service.list(search);
+		model.addAttribute("list", list);
+		
 		PagingProcess paging = new PagingProcess();
 		paging.setCurruntPage(curruntPage);
-		paging.setTotalPosts(service.totalPosts());
-		paging.setTotalPages(paging.getTotalPosts());
-
-		Map<String, Integer> map = new HashMap<String, Integer>();
-		map.put("curruntPage", paging.getCurruntPage());
-		map.put("pageShown", paging.getPageShown());
-
-		List<BoardVO> list = service.list(map);
-
-		model.addAttribute("list", list);
+		paging.setTotalPosts(service.totalPosts(search));
+		
 		model.addAttribute("paging", paging);
 		return "board/list";
 	}
@@ -57,10 +54,8 @@ public class BoardController {
 	@RequestMapping("read")
 	public String read(@RequestParam Map<String, Object> map, BoardVO board, Model model) {
 
-		int cp = (Integer.parseInt((String) map.get("curruntPage")) / 10) + 1;
-
 		model.addAttribute("board", service.read(Integer.parseInt((String) map.get("seq"))));
-		model.addAttribute("curruntPage", cp);
+		model.addAttribute("curruntPage", Integer.parseInt((String)map.get("curruntPage")));
 		return "board/read";
 	}
 

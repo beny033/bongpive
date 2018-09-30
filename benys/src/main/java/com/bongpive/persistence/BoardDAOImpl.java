@@ -1,14 +1,13 @@
 package com.bongpive.persistence;
 
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.bongpive.domain.BoardSearch;
 import com.bongpive.domain.BoardVO;
-import com.bongpive.domain.PagingProcess;
 
 @Repository
 public class BoardDAOImpl implements BoardDAO {
@@ -22,8 +21,8 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 	@Override
-	public List<BoardVO> list(Map<String, Integer> map) {
-		return session.selectList("board.list", map);
+	public List<BoardVO> list(BoardSearch search) {
+		return session.selectList("board.list", search);
 	}
 
 	@Override
@@ -47,8 +46,8 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 	@Override
-	public int totalPosts() {
-		return session.selectOne("board.totalPosts");
+	public int totalPosts(BoardSearch search) {
+		return session.selectOne("board.totalPosts", search);
 	}
 
 

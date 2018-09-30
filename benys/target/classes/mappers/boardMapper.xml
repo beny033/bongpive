@@ -12,8 +12,9 @@
 			TBL_BOARD
 		WHERE
 			SEQ &gt; 0
+		<include refid="search"></include>
 		ORDER BY SEQ DESC
-		LIMIT #{curruntPage}, #{pageShown}
+		LIMIT #{pageStart}, #{postShown} 
 	</select>
 	
 	<insert id="register">
@@ -70,9 +71,27 @@
 			COUNT(SEQ)
 		FROM
 			TBL_BOARD
+		WHERE SEQ &gt; 0
+		<include refid="search"></include>
 	</select>
 
-
+	<sql id="search">
+		<if test="searchType != null">
+		  <if test="searchType == 'writer'.toString()">
+		  	AND WRITER LIKE CONCAT('%', #{searchText}, '%')
+		  </if>
+		  <if test="searchType == 'title'.toString()">
+		    AND TITLE LIKE CONCAT('%', #{searchText}, '%')
+		  </if>
+		  <if test="searchType == 'content'.toString()">
+		    AND CONTENT LIKE CONCAT('%', #{searchText}, '%')
+		  </if>
+		  <if test="searchType == 'writerContent'.toString()">
+		    AND WRITER LIKE CONCAT('%', #{searchText}, '%')
+		     OR CONTENT LIKE CONCAT('%', #{searchText}, '%')
+		  </if>
+		</if>
+	</sql>
 
 </mapper>
 

@@ -1,11 +1,11 @@
 package com.bongpive.service;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.bongpive.domain.BoardSearch;
 import com.bongpive.domain.BoardVO;
 import com.bongpive.persistence.BoardDAO;
 
@@ -21,8 +21,8 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
-	public List<BoardVO> list(Map<String, Integer> map) {
-		return dao.list(map);
+	public List<BoardVO> list(BoardSearch search) {
+		return dao.list(search);
 	}
 
 	@Override
@@ -46,8 +46,8 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public int totalPosts() {
-		return dao.totalPosts();
+	public int totalPosts(BoardSearch search) {
+		return dao.totalPosts(search);
 	}
 
 }

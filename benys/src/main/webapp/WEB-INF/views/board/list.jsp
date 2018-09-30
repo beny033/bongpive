@@ -23,9 +23,9 @@
 
 	<jsp:include page="../include/header.jsp" />
 
-	<form action="" method="post">
+	<form action="list" method="get">
 	  <select name="searchType">
-		<option value="none">- - - - - - - -</option>
+		<option value="none">- - - - - - - - -</option>
 		<option value="writer">작성자</option>
 		<option value="title">제 목</option>
 		<option value="content">내 용</option>
@@ -52,8 +52,8 @@
 			<c:choose>
 		    <c:when test="${fn:length(ListTitle) > 20}">
 				<script>
-					var listTitle = '${list.title}'.substring(0,20) + ".....";
-					document.write("<a href='read?seq=${list.seq}&curruntPage=${paging.curruntPage}'>" + listTitle + "...." + "</a>");
+				  var listTitle = '${list.title}'.substring(0,20) + " . . . . .";
+				  document.write("<a href='read?seq=${list.seq}&curruntPage=${paging.curruntPage}'>" + listTitle + "</a>");
 				</script>
 		    </c:when>
 		    <c:otherwise>
@@ -71,18 +71,25 @@
 		<tr>
 		  <td class="last"><input type="button" value="글쓰기" id="writeBtn" onclick="location.href='register'"></td>
 		</tr>
-	
-	    <tr>
-	   <c:forEach begin="1" end="${paging.totalPages}" step="1" var="pagingNumber">
-	     <td class="pages">
-		   <div id="pagesBtn">
-			 <button >>></button>
-			 <button onclick="location.href='list?curruntPage=${pagingNumber}'">${pagingNumber}</button>
-		   </div>
-	 	 </td>
-	   </c:forEach>
-		</tr>
- 
 	</table>
+
+	<c:if test="${paging.previous}">
+	  <div id="page">
+		<button id="pages" onclick="location.href='list?curruntPage=${paging.startPage - 1}&searchType=${search.searchType}&searchText=${search.searchText}'">&lt;</button>
+	  </div>	
+	</c:if>
+	
+	<c:forEach begin="${paging.startPage}" end="${paging.endPage}" step="1" var="pagingNumber">
+	  <div id="page">
+		<button id="pages" onclick="location.href='list?curruntPage=${pagingNumber}&searchType=${search.searchType}&searchText=${search.searchText}'">${pagingNumber}</button>
+	  </div>
+	</c:forEach>
+	
+	<c:if test="${paging.next}">
+	  <div id="page">
+		<button id="pages" onclick="location.href='list?curruntPage=${paging.endPage + 1}&searchType=${search.searchType}&searchText=${search.searchText}'">&gt;</button>
+	  </div>
+	</c:if>
+	
 </body>
 </html>

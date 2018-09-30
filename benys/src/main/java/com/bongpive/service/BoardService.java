@@ -1,15 +1,15 @@
 package com.bongpive.service;
 
 import java.util.List;
-import java.util.Map;
 
+import com.bongpive.domain.BoardSearch;
 import com.bongpive.domain.BoardVO;
 
 public interface BoardService {
 
 	public void register(BoardVO board);
 	
-	public List<BoardVO> list(Map<String, Integer> map);
+	public List<BoardVO> list(BoardSearch search);
 	
 	public BoardVO read(int seq);
 	
@@ -19,5 +19,6 @@ public interface BoardService {
 
 	public void modify(BoardVO board);
 	
-	public int totalPosts();
+	public int totalPosts(BoardSearch search);
+	
 }
